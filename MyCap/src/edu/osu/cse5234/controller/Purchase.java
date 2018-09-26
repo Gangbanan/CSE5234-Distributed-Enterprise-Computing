@@ -1,5 +1,9 @@
 package edu.osu.cse5234.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +22,22 @@ import edu.osu.cse5234.model.ShippingInfo;
 @RequestMapping(path="/purchase")
 public class Purchase {
 	
+	
+	
+	
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// ... instantiate and set order object with items to display
+		Item item1 = new Item("Cap1", "15", "10");
+		Item item2 = new Item("Cap1", "16", "20");
+		Item item3 = new Item("Cap1", "17", "30");
+		Item item4 = new Item("Cap1", "18", "40");
+		Item item5 = new Item("Cap1", "19", "50");
+		List<Item> orderList = Arrays.asList(item1, item2, item3, item4, item5);
+		Order order = new Order();
+		order.setItems(orderList);
+		request.setAttribute("order", order);
 		return "OrderEntryForm"; 
 	}
 	

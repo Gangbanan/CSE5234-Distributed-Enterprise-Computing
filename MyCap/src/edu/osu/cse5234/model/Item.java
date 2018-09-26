@@ -5,6 +5,14 @@ public class Item {
 	private String price;
 	private String quantity;
 	
+	public Item() {}
+	
+	public Item(String tmpName, String tmpPrice, String tmpQuantity) {
+		name = tmpName;
+		price = tmpPrice;
+		quantity = tmpQuantity;
+	}
+	
 	public String getName() {
 		return name;
 	}
