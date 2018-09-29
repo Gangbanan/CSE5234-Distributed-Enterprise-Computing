@@ -94,7 +94,26 @@ public class Purchase {
 	
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request) {
-		return "redirect:/purchase/viewViewConfirmation";
+		Order order = (Order) request.getSession().getAttribute("order");
+		List<Item> totalOrderItems = totalOrder.getItems();
+		List<Item> orderItems = order.getItems();
+		if (totalOrderItems.size() != orderItems.size()) {
+			return "redirect:/purchase";
+		}
+		for (int i = 0; i < totalOrderItems.size(); i++) {
+			Item totalI = totalOrderItems.get(i);
+			Item orderI = orderItems.get(i);
+			if (Integer.valueOf(totalI.getQuantity()) < Integer.valueOf(orderI.getQuantity())) {
+				return "redirect:/purchase";
+			}
+		}
+		for (int i = 0; i < totalOrderItems.size(); i++) {
+			Item totalI = totalOrderItems.get(i);
+			Item orderI = orderItems.get(i);
+			int left = Integer.valueOf(totalI.getQuantity()) - Integer.valueOf(orderI.getQuantity());
+			totalI.setQuantity(Integer.toString(left));
+		}
+		return "redirect:/purchase/viewConfirmation";
 	}
 	
 	@RequestMapping(path = "/viewConfirmation", method = RequestMethod.GET)

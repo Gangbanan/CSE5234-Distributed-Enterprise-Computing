@@ -69,6 +69,29 @@
 	</table> 
 </form:form>
 
+<form:form modelAttribute="payment" method="post" action="./submitPayment">
+	<table>
+			<tr>
+				<td>Enter Card Number:</td> 
+				<td>${payment.cardNumber}</td>
+			</tr>
+			<tr>
+				<td>Enter Expiration Date:</td> 
+				<td>${payment.expirationDate}</td>
+			</tr>
+			<tr>
+				<td>Enter CVV Code:</td> 
+				<td>${payment.cvvCode}</td>
+			</tr>
+			<tr>
+				<td>Enter Name on Card:</td> 
+				<td>${payment.cardHolderName}</td>
+			</tr>
+		<tr>
+		</tr>
+	</table> 
+</form:form>
+
 <form:form method="post" action="./confirmOrder">
 	<table>
 		<tr>
