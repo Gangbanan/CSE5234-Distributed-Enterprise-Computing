@@ -25,6 +25,13 @@
 <form:form modelAttribute="order" >
 	<table>
 		<tr>
+			<td>Order Number</td>
+			<td> ${order.orderID}</td>
+		</tr>
+		
+	</table> 
+	<table>
+		<tr>
 			<td>Cap Name</td>
 			<td>Price</td> 
 			<td>Quantity</td>

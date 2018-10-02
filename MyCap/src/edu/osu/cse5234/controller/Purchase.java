@@ -25,7 +25,6 @@ public class Purchase {
 	
 	Order totalOrder;
 	
-	
 	@RequestMapping(method = RequestMethod.GET)
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// ... instantiate and set order object with items to display
@@ -107,6 +106,7 @@ public class Purchase {
 				return "redirect:/purchase";
 			}
 		}
+		order.confirm();
 		for (int i = 0; i < totalOrderItems.size(); i++) {
 			Item totalI = totalOrderItems.get(i);
 			Item orderI = orderItems.get(i);
