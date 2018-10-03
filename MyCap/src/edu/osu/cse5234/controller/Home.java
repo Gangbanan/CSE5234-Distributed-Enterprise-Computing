@@ -40,4 +40,16 @@ public class Home {
 		request.setAttribute("totalOrder", totalOrder);
 		return "home"; 
 	}
+	
+	@RequestMapping(path="aboutUs", method = RequestMethod.GET)
+	public String aboutUs(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// ... instantiate and set order object with items to display
+		return "AboutUs"; 
+	}
+	
+	@RequestMapping(path="contact", method = RequestMethod.GET)
+	public String contact(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// ... instantiate and set order object with items to display
+		return "contact"; 
+	}
 }
