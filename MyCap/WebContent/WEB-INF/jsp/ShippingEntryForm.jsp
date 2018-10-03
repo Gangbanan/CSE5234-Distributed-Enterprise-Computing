@@ -7,18 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-	<style>
-		table, th, td {
-		    border: 2px solid black;
-		    border-collapse: collapse;
-		}
-		th, td {
-		    padding: 5px;
-		    text-align: left;    
-		}
-	</style>
+	<link rel="stylesheet" href='/MyCap/css/mystyle.css'>
 </head>
 <body>
+
+<jsp:include page = "head.jsp">
+</jsp:include>
+
+
+<div id="wrapper">
 <form:form modelAttribute="shipping" method="post" action="./submitShipping">
 	<table>
 			<tr>
@@ -51,5 +48,10 @@
 		</tr>
 	</table> 
 </form:form>
+
+</div>
+
+<jsp:include page="footer.jsp">
+</jsp:include>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@ include file="header.jsp" %>
+<jsp:include page = "head.jsp">
 <h1>About Us</h1>'
 <h2>Xin Xu</h2>
 <h3>Education</h3>

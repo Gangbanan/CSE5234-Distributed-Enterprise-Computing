@@ -2,7 +2,7 @@
 /.recommenders/
 /Greetings/
 /HelloWorld/
-/MyCap/.settings/
+/MyCap/.settings/*
 /spring-websocket-4.2.0.RELEASE/
 /HelloWorld/.setting/
 /HelloWorld/.classpath

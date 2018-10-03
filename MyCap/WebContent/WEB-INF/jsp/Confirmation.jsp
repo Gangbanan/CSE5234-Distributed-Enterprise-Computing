@@ -7,34 +7,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<style>
-		table, th, td {
-		    border: 2px solid black;
-		    border-collapse: collapse;
-		}
-		th, td {
-		    padding: 5px;
-		    text-align: left;    
-		}
-	</style>
+	<link rel="stylesheet" href='/MyCap/css/mystyle.css'>
 </head>
 
 
 
 <body>
+
+<jsp:include page = "head.jsp" />
+<div id="wrapper">
+
 <form:form modelAttribute="order" >
+	<h2 class="title">
+		Order Number: ${order.orderID}
+	</h2>
+	<h2 class="title">
+		Purchased Caps
+	</h2>
 	<table>
 		<tr>
-			<td>Order Number</td>
-			<td> ${order.orderID}</td>
-		</tr>
-		
-	</table> 
-	<table>
-		<tr>
-			<td>Cap Name</td>
-			<td>Price</td> 
-			<td>Quantity</td>
+			<th>Cap Name</th>
+			<th>Price</th> 
+			<th>Quantity</th>
 		</tr>
 		<c:forEach items="${order.items}" var="item" varStatus="loop">
 			<tr>
@@ -48,6 +42,9 @@
 </form:form>
 
 <form:form modelAttribute="shipping">
+	<h2 class="title">
+		Shipping Information
+	</h2>
 	<table>
 		<tr>
 			<td>name</td>
@@ -77,6 +74,9 @@
 </form:form>
 
 <form:form modelAttribute="payment" method="post" action="./submitPayment">
+	<h2 class="title">
+		Payment Information
+	</h2>
 	<table>
 			<tr>
 				<td>Enter Card Number:</td> 
@@ -106,7 +106,9 @@
 		</tr>
 	</table> 
 </form:form>
+</div>
 
+<jsp:include page = "footer.jsp" />
 
 </body>
 </html>

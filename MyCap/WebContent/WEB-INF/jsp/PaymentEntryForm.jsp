@@ -7,7 +7,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>payment</title>
+	<link rel="stylesheet" href='/MyCap/css/mystyle.css'>
 <body>
+<jsp:include page = "head.jsp">
+</jsp:include>
+
+<div id="wrapper">
 <form:form modelAttribute="payment" method="post" action="./submitPayment">
 	<table>
 			<tr>
@@ -29,6 +34,9 @@
 		</tr>
 	</table> 
 </form:form>
+</div>
 
+<jsp:include page="footer.jsp">
+</jsp:include>
 </body>
 </html>
