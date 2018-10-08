@@ -16,9 +16,10 @@
 
 <div class="about-wrapper">
 <h1 class="about-title">Contact us</h1>
-<h3> Contack information </h3>
+<h3> Contact information </h3>
 <p> Email: xu.3201@osu.edu </p>
 <p> Phone: 6146878238 </p>
+<p>sattelberg-rivera.1@osu.edu<p>
 
 <h3> Company Address </h3>
 <p> 2015 Neil Ave, Columbus, OH 43210, Room 319 </p>

@@ -28,7 +28,7 @@
 
 <div class="profiles">
 	<div class="profile allan">	
-		<img src="/MyCap/images/allan.png" height="210" width="210" alt="Allan Profile">
+		<img src="/MyCap/images/rivera.jpg" height="210" width="210" alt="Allan Profile">
 		<h3>Allan Sattelberg-Rivera</h3>
 		<h4>Job Title: Programmer</h4>
 		<h4>Email: Sattelberg-Rivera.1@osu.edu</h4>
