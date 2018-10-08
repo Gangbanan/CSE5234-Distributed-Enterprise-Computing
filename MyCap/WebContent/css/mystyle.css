@@ -7,9 +7,12 @@ html {
 }
 
 body {
-	margin: 0px;
 	padding: 0px;
 	height: 100%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #363636;
+	margin: 0;
 }
 
 .header {
@@ -81,10 +84,11 @@ input {
 }
 
 #wrapper {
-	margin-left:10%;
-    margin-right:auto;
-    height:auto; 
-    width:auto;
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 8px;
+	max-width: 800px;
+    height:auto;
 }
 
 .button-bar {
@@ -135,4 +139,49 @@ li a {
 li a:hover {
 	background-color: #808080;
 	color: #fff;
+}
+
+.about-wrapper{
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 8px;
+	max-width: 600px;
+	margin-bottom: 50px;
+}
+.about-title{
+	margin-top: 50px;
+}
+/* sub-container for information in profile section */
+.profile{
+	display: block;
+	height: 230px;
+	margin: 24px 0;
+}
+/* style the images in the profile section */
+.profile > img{
+	float: left;
+	padding-right: 16px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	
+}
+/* style the names in the profile section */
+.profile > h3{
+	margin: 0; 
+}
+.hongliang > h3{
+	padding-top: 40px;
+}
+.allan > h3{
+	padding-top: 40px;
+}
+.xin > h3{
+	padding-top: 70px;
+}
+
+img.capimg{
+	width: 200px;
+	height: 150px;
+	
 }

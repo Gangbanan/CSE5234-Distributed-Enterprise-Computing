@@ -6,8 +6,8 @@
 </head>
 <body>
     <div class="header">
-    	<h1>MyCap</h1>
-    	<h3>Find the latest cap here</h3>
+    	<h1>Fa$hion Cap</h1>
+    	<h3 style="font-style:italic;">Find the latest fa$hion cap here</h3>
     	<ul >
         <li><a href="/MyCap">Home</a></li>
         <li><a href="/MyCap/aboutUs">About Us</a></li>

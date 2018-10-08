@@ -29,8 +29,8 @@ public class Purchase {
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// ... instantiate and set order object with items to display
 		if (totalOrder == null) {
-			Item item1 = new Item("Cap1", "15", "10");
-			Item item2 = new Item("Cap1", "16", "20");
+			Item item1 = new Item("New York Yankees '47 MLB Black Series MVP Cap", "15", "10");
+			Item item2 = new Item("Melin The Bar Inlay Cap", "16", "20");
 			Item item3 = new Item("Cap1", "17", "30");
 			Item item4 = new Item("Cap1", "18", "40");
 			Item item5 = new Item("Cap1", "19", "50");
