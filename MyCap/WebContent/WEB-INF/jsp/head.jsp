@@ -11,7 +11,7 @@
     	<ul >
         <li><a href="/MyCap">Home</a></li>
         <li><a href="/MyCap/aboutUs">About Us</a></li>
-        <li><a href="/MyCap/Contact">Contact Us</a></li>
+        <li><a href="/MyCap/contact">Contact Us</a></li>
         <li><a href="/MyCap/purchase">Purchase</a></li>
         <li style="border-right: 0px;"><a href="/MyCap/purchase">My Cart</a></li>
     </ul>
