@@ -3,6 +3,7 @@
 	<name>MyCap</name>
 	<comment></comment>
 	<projects>
+		<project>MyCap-InventoryManagement-EJBClient</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
