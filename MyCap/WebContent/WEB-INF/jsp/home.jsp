@@ -13,7 +13,7 @@
 </jsp:include>
 
 <div class="about-wrapper">
-<h2> Company Vision & Mission </h2>
+<h2> Company Vision && Mission </h2>
 <p>Provide the latest fa$hion cap.</p>
 <h2> Company business strategy </h2>
 <p>To be the leader for hats.Represent your team, your town, and your style by customizing your own hat in the Custom Zone. 

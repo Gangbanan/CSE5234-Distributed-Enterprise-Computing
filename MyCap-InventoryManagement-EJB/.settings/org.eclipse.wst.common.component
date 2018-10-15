@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MyCap-InventoryManagement-EJB">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <property name="java-output-path" value="/MyCap-InventoryManagement-EJB/build/classes"/>
+        <property name="ClientProject" value="MyCap-InventoryManagement-EJBClient"/>
+        <property name="ClientJARURI" value="MyCap-InventoryManagement-EJBClient.jar"/>
+    </wb-module>
+</project-modules>

@@ -1,6 +1,12 @@
-package edu.osu.cse5234.model;
+package edu.osu.cse5234.business.view;
 
-public class Item {
+import sun.misc.JavaAWTAccess;
+
+public class Item implements java.io.Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5238185927943559551L;
 	private String name;
 	private String price;
 	private String quantity;

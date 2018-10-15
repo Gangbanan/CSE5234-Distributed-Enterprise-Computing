@@ -35,7 +35,11 @@
 				<td><c:out value="${item.name}"></c:out></td>
 				<td><c:out value="$${item.price}"></c:out></td> 
 				<td><c:out value="${item.quantity}"></c:out></td> 
-				<td><form:input path="items[${loop.index}].quantity" value="0" /></td>
+				<td>
+				<form:input path="items[${loop.index}].quantity" value="0" />
+				<form:input type="hidden" path="items[${loop.index}].name" value="${item.name}" />
+				<form:input type="hidden" path="items[${loop.index}].price" value="${item.price}" />
+				</td>
 			</tr> 
 		</c:forEach>
 	</table> 
