@@ -80,7 +80,8 @@ public class Purchase {
 	public String confirmOrder(HttpServletRequest request) {
 		Order order = (Order) request.getSession().getAttribute("order");
 		OrderProcessingServiceBean orderProSerBean = new OrderProcessingServiceBean();
-		orderProSerBean.processOrder(order);
+		String confirmId = orderProSerBean.processOrder(order);
+		request.getSession().setAttribute("confirmId", confirmId);
 		return "redirect:/purchase/viewConfirmation";
 	}
 	

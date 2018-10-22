@@ -30,7 +30,7 @@
 		</tr>
 		<c:forEach items="${order.items}" var="item" varStatus="loop">
 			<tr>
-				<td><c:out value="${item.name}"></c:out></td>
+				<td><c:out value="${item.description}"></c:out></td>
 				<td><c:out value="$${item.price}"></c:out></td> 
 				<td><c:out value="${item.quantity}"></c:out></td>
 			</tr>
@@ -77,19 +77,19 @@
 	</h2>
 	<table>
 			<tr>
-				<td>Enter Card Number:</td> 
+				<td>Card Number:</td> 
 				<td>${payment.cardNumber}</td>
 			</tr>
 			<tr>
-				<td>Enter Expiration Date:</td> 
+				<td>Expiration Date:</td> 
 				<td>${payment.expirationDate}</td>
 			</tr>
 			<tr>
-				<td>Enter CVV Code:</td> 
+				<td>CVV Code:</td> 
 				<td>${payment.cvvCode}</td>
 			</tr>
 			<tr>
-				<td>Enter Name on Card:</td> 
+				<td>Name on Card:</td> 
 				<td>${payment.cardHolderName}</td>
 			</tr>
 		<tr>

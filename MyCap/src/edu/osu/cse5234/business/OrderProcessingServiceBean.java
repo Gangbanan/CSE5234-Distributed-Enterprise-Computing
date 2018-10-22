@@ -31,8 +31,8 @@ public class OrderProcessingServiceBean {
     	invSer.updateInventory(order.getItems());
     	Random random = new Random();
     	int orderNum = random.nextInt(10000000);
-    	String orderID = String.format("%12d", orderNum).replace(" ", "0");
-    	return orderID;
+    	String confirmId = String.format("%12d", orderNum).replace(" ", "0");
+    	return confirmId;
     }
     
     public boolean validateItemAvailability(Order order) {

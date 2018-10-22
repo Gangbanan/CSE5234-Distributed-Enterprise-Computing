@@ -27,6 +27,7 @@ public class InventoryServiceBean implements InventoryService {
 	EntityManager entityManager;
 	
 	private final String MY_QUERY = "SELECT i FROM Item i";
+	List<Item> inventoryList = null;
 	
     public InventoryServiceBean() {
         // TODO Auto-generated constructor stub
@@ -34,26 +35,25 @@ public class InventoryServiceBean implements InventoryService {
 
 	@Override
 	public Inventory getAvailableInventory() {
-		// TODO Auto-generated method stub
-		Item item1 = new Item("New York Yankees '47 MLB Black Series MVP Cap", 15, 10);
-		Item item2 = new Item("Melin The Bar Inlay Cap", 16, 20);
-		Item item3 = new Item("Cap1", 17, 30);
-		Item item4 = new Item("Cap1", 18, 40);
-		Item item5 = new Item("Cap1", 19, 50);
-		List<Item> itemList = Arrays.asList(item1, item2, item3, item4, item5);
 		
-
-//		List<Item> itemList = entityManager.createQuery(MY_QUERY, Item.class).getResultList();
-		
+		updateInventoryList();
 		Inventory inventory = new Inventory();
-		inventory.setItems(itemList);
+		inventory.setItems(inventoryList);
 		
 		return inventory;
 	}
 
 	@Override
 	public boolean validateQuantity(List<Item> itemList) {
-		// TODO Auto-generated method stub
+		updateInventoryList();
+		for (Item itemInv : inventoryList) {
+			for (Item item : itemList) {
+				if (item.getQuantity() < 0 || 
+					itemInv.getId() == item.getId() && item.getQuantity() >  itemInv.getQuantity())
+					return false;
+			}
+		}
+		
 		return true;
 	}
 
@@ -63,6 +63,10 @@ public class InventoryServiceBean implements InventoryService {
 		return true;
 	}
     
+	public void updateInventoryList() {
+		inventoryList = entityManager.createQuery(MY_QUERY, Item.class).getResultList();
+	}
+	
 	public EntityManager getEntityManager() {
 		return this.entityManager;
 	}

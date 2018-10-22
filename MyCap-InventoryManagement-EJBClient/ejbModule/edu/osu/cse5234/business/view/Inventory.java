@@ -2,6 +2,9 @@ package edu.osu.cse5234.business.view;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Inventory implements java.io.Serializable{
 	
 	

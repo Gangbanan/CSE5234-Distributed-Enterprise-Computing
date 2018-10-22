@@ -3,6 +3,7 @@ package edu.osu.cse5234.model;
 public class ShippingInfo {
 	//Shipping information contains name, addressLine1, addressLine2, city, state, and zip as properties.
 	
+	private int id;
 	private String name;
 	private String addressLine1;
 	private String addressLine2;
@@ -45,6 +46,12 @@ public class ShippingInfo {
 	}
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

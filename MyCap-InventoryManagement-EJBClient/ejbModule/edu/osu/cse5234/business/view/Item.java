@@ -10,6 +10,7 @@ public class Item implements java.io.Serializable{
 	/**
 	 * 
 	 */
+	@Transient
 	private static final long serialVersionUID = 529792865303031544L;
 	/**
 	 * 
@@ -36,6 +37,7 @@ public class Item implements java.io.Serializable{
 	private int quantity;
 	@Column(name="UNIT_PRICE")
 	private double price;
+	
 	
 	
 	
