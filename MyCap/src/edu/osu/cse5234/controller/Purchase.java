@@ -1,6 +1,8 @@
 package edu.osu.cse5234.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.osu.cse5234.business.OrderProcessingServiceBean;
+import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.InventoryService;
+import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.Order;
 import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.model.ShippingInfo;
@@ -25,7 +29,9 @@ public class Purchase {
 		// ... instantiate and set order object with items to display
 		InventoryService invSer = ServiceLocator.getInventoryService();
 		Order order = new Order();
-		order.setItems(invSer.getAvailableInventory().getItems());
+		Inventory inventory = invSer.getAvailableInventory();
+		List<Item> itemList = inventory.getItems();
+		order.setItems(itemList);
 		request.setAttribute("totalOrder", order);
 		return "OrderEntryForm"; 
 	}

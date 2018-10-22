@@ -6,6 +6,8 @@
 /spring-websocket-4.2.0.RELEASE/
 /HelloWorld/.setting/
 /HelloWorld/.classpath
-/MyCap-InventoryManagement-EJBClient/.setting/
+/MyCap-InventoryManagement-EJBClient/.setting/*
 /MyCap-InventoryManagement-EJBClient/.classpath
 
+MyCap-InventoryManagement-EJB/.classpath
+/MyCap-InventoryManagement-EJB/.setting/*

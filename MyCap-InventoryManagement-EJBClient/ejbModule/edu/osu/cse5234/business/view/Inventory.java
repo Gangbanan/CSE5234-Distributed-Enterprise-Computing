@@ -3,6 +3,8 @@ package edu.osu.cse5234.business.view;
 import java.util.List;
 
 public class Inventory implements java.io.Serializable{
+	
+	
 	/**
 	 * 
 	 */

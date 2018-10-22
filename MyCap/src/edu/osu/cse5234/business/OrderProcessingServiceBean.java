@@ -1,5 +1,7 @@
 package edu.osu.cse5234.business;
 
+import java.util.Random;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
@@ -27,7 +29,10 @@ public class OrderProcessingServiceBean {
     	InventoryService invSer = ServiceLocator.getInventoryService();
     	if (invSer.validateQuantity(order.getItems()) == false) return null;
     	invSer.updateInventory(order.getItems());
-    	return order.confirm();
+    	Random random = new Random();
+    	int orderNum = random.nextInt(10000000);
+    	String orderID = String.format("%12d", orderNum).replace(" ", "0");
+    	return orderID;
     }
     
     public boolean validateItemAvailability(Order order) {
