@@ -30,9 +30,7 @@ public class Purchase {
 		InventoryService invSer = ServiceLocator.getInventoryService();
 		Order order = new Order();
 		Inventory inventory = invSer.getAvailableInventory();
-		List<Item> itemList = inventory.getItems();
-		order.setItems(itemList);
-		request.setAttribute("totalOrder", order);
+		request.setAttribute("inventory", inventory);
 		return "OrderEntryForm"; 
 	}
 	
