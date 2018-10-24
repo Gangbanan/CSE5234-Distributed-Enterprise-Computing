@@ -10,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.osu.cse5234.business.view.Inventory;
+import edu.osu.cse5234.business.view.InventoryService;
 import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.Order;
+import edu.osu.cse5234.util.ServiceLocator;
 
 @Controller
 @RequestMapping(path="/")
@@ -20,18 +23,9 @@ public class Home {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String homePage(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// ... instantiate and set order object with items to display
-		if (totalOrder == null) {
-			Item item1 = new Item("Cap1", 15, 10);
-			Item item2 = new Item("Cap1", 16, 20);
-			Item item3 = new Item("Cap1", 17, 30);
-			Item item4 = new Item("Cap1", 18, 40);
-			Item item5 = new Item("Cap1", 19, 50);
-			List<Item> orderList = Arrays.asList(item1, item2, item3, item4, item5);
-			totalOrder = new Order();
-			totalOrder.setItems(orderList);
-		}
-		request.setAttribute("totalOrder", totalOrder);
+		InventoryService invSer = ServiceLocator.getInventoryService();
+		Inventory inventory = invSer.getAvailableInventory();
+		request.setAttribute("inventory", inventory);
 		return "home"; 
 	}
 	

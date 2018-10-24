@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,27 +22,23 @@
 Design the hottest brands for young people.</p>
 
 
-
 <table>
-	<thead>
-		<tr>
-			<th>Cap</th>
-			<th>Cap Name</th>
-			<th>Price</th> 
+		<thead>
+			<tr>
+				<th>Cap</th>
+				<th>Cap Name</th>
+				<th>Price</th> 
+			</tr>
+		</thead>
+		<c:forEach items="${inventory.items}" var="item" varStatus="loop">
+			<tr>
+			<td><img class="capimg" src="<c:url value="/images/${item.name}.png"/> " >
+			</td> 
+			<td> <c:out value="${item.description}" /></td>
+			<td> <c:out value="$${item.price}" /> </td>
 		</tr>
-	</thead>
-	<tr>
-		<td><img class="capimg" src="/MyCap/images/cap1.png"></td> 
-		<td> New York Yankees '47 MLB Black Series MVP Cap</td>
-		<td>$15</td>
-	</tr>
-	<tr>
-		<td><img class="capimg" src="/MyCap/images/cap2.png"></td> 
-		<td> Melin The Bar Inlay Cap</td>
-		<td>$16</td>
-	</tr> 
-</table> 
-
+		</c:forEach>
+	</table>
 </div>
 
 

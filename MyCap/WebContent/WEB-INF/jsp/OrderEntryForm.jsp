@@ -19,7 +19,14 @@
 
 
 <div id="wrapper">
-<form:form modelAttribute="totalOrder" method="post" action="purchase/submitItems">
+
+<c:if test = '${valid == "invalid"}'>
+	<h2>
+	Please enter a valid number!
+	</h2>
+</c:if>
+
+<form:form method="post" action="purchase/submitItems">
 
 	<table>
 		<thead>
@@ -30,20 +37,20 @@
 				<th>Quantity</th>
 			</tr>
 		</thead>
-		<c:forEach items="${totalOrder.items}" var="item" varStatus="loop">
+		<c:forEach items="${inventory.items}" var="item" varStatus="loop">
 			<tr>
-				<td><c:out value="${item.description}"></c:out></td>
+				<td><c:out value="${item.name}"></c:out></td>
 				<td><c:out value="$${item.price}"></c:out></td> 
-				<td><c:out value="${item.quantity}"></c:out></td> 
+				<td><c:out value="${item.quantity}"></c:out></td>
 				<td>
-				<form:input path="items[${loop.index}].quantity" value="0" />
-				<form:input type="hidden" path="items[${loop.index}].description" value="${item.description}" />
-				<form:input type="hidden" path="items[${loop.index}].name" value="${item.name}" />
-				<form:input type="hidden" path="items[${loop.index}].price" value="${item.price}" />
+				<input name="lineItems[${loop.index}].quantity" value="0" />
+				<input type="hidden" name="lineItems[${loop.index}].id" value="${item.id} " />
+				<input type="hidden" name="lineItems[${loop.index}].itemName" value="${item.name}" />
+				<input type="hidden" name="lineItems[${loop.index}].price" value="${item.price}" />
 				</td>
 			</tr> 
 		</c:forEach>
-	</table> 
+	</table>
 	<input class="confirmation" type="submit" value="Purchase">
 </form:form>
 </div>

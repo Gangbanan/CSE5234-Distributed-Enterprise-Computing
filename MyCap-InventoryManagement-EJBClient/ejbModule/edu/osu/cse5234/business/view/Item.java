@@ -16,13 +16,6 @@ public class Item implements java.io.Serializable{
 	 * 
 	 */
 	
-//	private int id;
-//	private int itemNumber;
-//	private String name;
-//	private String description;
-//	private int quantity;
-//	private double price;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
@@ -43,8 +36,11 @@ public class Item implements java.io.Serializable{
 	
 	public Item() {}
 	
-	public Item(String name, double price, int quantity) {
+	public Item(int id, int itemNumber, String name, String description, int quantity, double price) {
+		this.id = id;
+		this.itemNumber = itemNumber;
 		this.name = name;
+		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
 	}

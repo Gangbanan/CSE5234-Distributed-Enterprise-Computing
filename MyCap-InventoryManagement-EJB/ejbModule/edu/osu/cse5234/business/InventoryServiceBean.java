@@ -35,7 +35,7 @@ public class InventoryServiceBean implements InventoryService {
 
 	@Override
 	public Inventory getAvailableInventory() {
-		
+		System.out.println("222");
 		updateInventoryList();
 		Inventory inventory = new Inventory();
 		inventory.setItems(inventoryList);

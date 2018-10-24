@@ -28,9 +28,13 @@ public class Purchase {
 	public String viewOrderEntryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// ... instantiate and set order object with items to display
 		InventoryService invSer = ServiceLocator.getInventoryService();
-		Order order = new Order();
 		Inventory inventory = invSer.getAvailableInventory();
 		request.setAttribute("inventory", inventory);
+		
+		// handle valid flag
+		request.setAttribute("valid", request.getSession().getAttribute("valid"));
+		request.getSession().setAttribute("valid", null);
+		
 		return "OrderEntryForm"; 
 	}
 	
@@ -38,8 +42,8 @@ public class Purchase {
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
 		OrderProcessingServiceBean orderProSerBean = new OrderProcessingServiceBean();
 		if (orderProSerBean.validateItemAvailability(order) == false) {
-			request.setAttribute("valid", false);
-			return "OrderEntryForm";
+			request.getSession().setAttribute("valid", "invalid");
+			return "redirect:/purchase";
 		}
 		request.getSession().setAttribute("order", order);
 		return "redirect:/purchase/paymentEntry";
