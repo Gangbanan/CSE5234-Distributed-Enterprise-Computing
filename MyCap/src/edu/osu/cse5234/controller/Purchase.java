@@ -1,7 +1,6 @@
 package edu.osu.cse5234.controller;
 
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import edu.osu.cse5234.business.OrderProcessingServiceBean;
 import edu.osu.cse5234.business.view.Inventory;
 import edu.osu.cse5234.business.view.InventoryService;
-import edu.osu.cse5234.business.view.Item;
 import edu.osu.cse5234.model.Order;
 import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.model.ShippingInfo;
@@ -30,7 +29,6 @@ public class Purchase {
 		InventoryService invSer = ServiceLocator.getInventoryService();
 		Inventory inventory = invSer.getAvailableInventory();
 		request.setAttribute("inventory", inventory);
-		
 		// handle valid flag
 		request.setAttribute("valid", request.getSession().getAttribute("valid"));
 		request.getSession().setAttribute("valid", null);
@@ -40,7 +38,7 @@ public class Purchase {
 	
 	@RequestMapping(path = "/submitItems", method = RequestMethod.POST)
 	public String submitItems(@ModelAttribute("order") Order order, HttpServletRequest request) {
-		OrderProcessingServiceBean orderProSerBean = new OrderProcessingServiceBean();
+		OrderProcessingServiceBean orderProSerBean = ServiceLocator.getOrderProcessingService();
 		if (orderProSerBean.validateItemAvailability(order) == false) {
 			request.getSession().setAttribute("valid", "invalid");
 			return "redirect:/purchase";
@@ -58,6 +56,7 @@ public class Purchase {
 	@RequestMapping(path = "/submitPayment", method = RequestMethod.POST)
 	public String submitPayment(@ModelAttribute("payment") PaymentInfo payment, HttpServletRequest request) {
 		request.getSession().setAttribute("payment", payment);
+		
 		return "redirect:/purchase/shippingEntry";
 	}
 	
@@ -81,7 +80,9 @@ public class Purchase {
 	@RequestMapping(path = "/confirmOrder", method = RequestMethod.POST)
 	public String confirmOrder(HttpServletRequest request) {
 		Order order = (Order) request.getSession().getAttribute("order");
-		OrderProcessingServiceBean orderProSerBean = new OrderProcessingServiceBean();
+		order.setPayment((PaymentInfo) request.getSession().getAttribute("payment"));
+		order.setShipping((ShippingInfo) request.getSession().getAttribute("shipping"));
+		OrderProcessingServiceBean orderProSerBean = ServiceLocator.getOrderProcessingService();
 		String confirmId = orderProSerBean.processOrder(order);
 		request.getSession().setAttribute("confirmId", confirmId);
 		return "redirect:/purchase/viewConfirmation";

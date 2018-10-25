@@ -8,9 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import edu.osu.cse5234.business.view.InventoryService;
-import edu.osu.cse5234.model.LineItem;
 import edu.osu.cse5234.model.Order;
-import edu.osu.cse5234.model.PaymentInfo;
 import edu.osu.cse5234.util.ServiceLocator;
 
 
@@ -31,26 +29,13 @@ public class OrderProcessingServiceBean {
     
     public String processOrder (Order order) {
     	// update inventory
-    	System.out.println(entityManager == null);
     	InventoryService invSer = ServiceLocator.getInventoryService();
     	if (invSer.validateQuantity(order.getItems()) == false) return null;
     	invSer.updateInventory(order.getItems());
     	
     	// store order into DB
-    	System.out.println("111");
-    	PaymentInfo li = new PaymentInfo();
-    	li.setCardHolderName("123");
-    	li.setCardNumber("123");
-    	li.setCvvCode("123");
-    	li.setExpirationDate("123");
-    	
-    	System.out.println("111");
-    	entityManager.persist(li);
-    	System.out.println(li.getId());
+    	entityManager.persist(order);
     	entityManager.flush();
-    	System.out.println("111");
-//    	entityManager.persist(order);
-//    	entityManager.flush();
     	
     	Random random = new Random();
     	int orderNum = random.nextInt(10000000);

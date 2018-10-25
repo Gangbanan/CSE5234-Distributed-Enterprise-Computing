@@ -53,11 +53,11 @@ public class Item implements java.io.Serializable{
 		this.id = id;
 	}
 	
-	public int getItemNubmer() {
+	public int getItemNumber() {
 		return this.itemNumber;
 	}
 
-	public void setItemNubmer(int itemNumber) {
+	public void setItemNumber(int itemNumber) {
 		this.itemNumber = itemNumber;
 	}
 	

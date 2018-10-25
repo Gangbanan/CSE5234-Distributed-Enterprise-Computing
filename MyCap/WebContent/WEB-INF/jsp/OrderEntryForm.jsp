@@ -45,6 +45,7 @@
 				<td>
 				<input name="lineItems[${loop.index}].quantity" value="0" />
 				<input type="hidden" name="lineItems[${loop.index}].id" value="${item.id} " />
+				<input type="hidden" name="lineItems[${loop.index}].itemNumber" value="${item.itemNumber} " />
 				<input type="hidden" name="lineItems[${loop.index}].itemName" value="${item.name}" />
 				<input type="hidden" name="lineItems[${loop.index}].price" value="${item.price}" />
 				</td>

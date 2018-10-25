@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="SHIPPING_INFO")
@@ -17,6 +18,7 @@ public class ShippingInfo {
 	@Column(name="ID")
 	private int id;
 	
+	@Transient
 	private String name;
 	@Column(name="ADDRESS1")
 	private String addressLine1;

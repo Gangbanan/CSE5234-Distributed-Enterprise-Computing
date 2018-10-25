@@ -38,6 +38,10 @@ public class Order {
 	@JoinColumn(name="PAYMENT_INFO_ID_FK")
 	private PaymentInfo payment;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="SHIPPING_INFO_ID_FK")
+	private ShippingInfo shipping;
+	
 	public List<Item> getItems() {
 		List <Item> items = new ArrayList<Item>();
 		for (LineItem lineItem : lineItems) {
@@ -76,6 +80,22 @@ public class Order {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public PaymentInfo getPayment() {
+		return payment;
+	}
+
+	public void setPayment(PaymentInfo payment) {
+		this.payment = payment;
+	}
+
+	public ShippingInfo getShipping() {
+		return shipping;
+	}
+
+	public void setShipping(ShippingInfo shipping) {
+		this.shipping = shipping;
 	}
 	
 	
