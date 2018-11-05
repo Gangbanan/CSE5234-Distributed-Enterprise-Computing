@@ -64,6 +64,12 @@ public class OrderProcessingServiceBean {
     	System.out.println("UPS accepted request? " + responseJson.getBoolean("Accepted"));
     	System.out.println("Shipping Reference Number: " +  responseJson.getInt("ShippingReferenceNumber"));
     	
+    	int shipRefNum = responseJson.getInt("ShippingReferenceNumber");
+    	order.getShipping().setShippingRefNumber(String.valueOf(shipRefNum));
+    	
+    	entityManager.persist(order);
+    	entityManager.flush();
+    	
     	Random random = new Random();
     	int orderNum = random.nextInt(10000000);
     	String confirmId = String.format("%12d", orderNum).replace(" ", "0");

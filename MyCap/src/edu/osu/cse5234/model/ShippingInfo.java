@@ -34,6 +34,8 @@ public class ShippingInfo {
 	private String zip;
 	@Column(name="EMAIL")
 	private String email;
+	@Column(name="UPS_SHIPPING_REF")
+	private String shippingRefNumber;
 	
 	public String getName() {
 		return name;
@@ -88,6 +90,12 @@ public class ShippingInfo {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	public String getShippingRefNumber() {
+		return shippingRefNumber;
+	}
+	public void setShippingRefNumber(String shippingRefNumber) {
+		this.shippingRefNumber = shippingRefNumber;
 	}
 	
 }
