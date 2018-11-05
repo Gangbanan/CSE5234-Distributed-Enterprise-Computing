@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.chase.payment.CreditCardPayment;
+
 @Entity
 @Table(name="PAYMENT_INFO")
 public class PaymentInfo {
@@ -23,6 +25,19 @@ public class PaymentInfo {
 	private String cvvCode;
 	@Column(name="HOLDER_NAME")
 	private String cardHolderName;
+	@Column(name="CONFIRMATION_NUM")
+	private String confirmationNumber;
+	
+	
+	public CreditCardPayment toCreditCardPayment() {
+		CreditCardPayment card = new CreditCardPayment();
+		card.setCardHolderName(cardHolderName);
+		card.setCardNumber(cardNumber);
+		card.setCvvCode(cvvCode);
+		card.setExpirationDate(expirationDate);
+		return card;
+	}
+	
 	
 	public String getCardNumber() {
 		return cardNumber;
@@ -53,6 +68,16 @@ public class PaymentInfo {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public String getConfirmationNumber() {
+		return confirmationNumber;
+	}
+
+
+	public void setConfirmationNumber(String confirmationNumber) {
+		this.confirmationNumber = confirmationNumber;
 	}
 	
 }
