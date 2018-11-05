@@ -2,7 +2,6 @@
 
 import javax.persistence.*;
 
-import sun.misc.JavaAWTAccess;
 
 @Entity
 @Table(name="ITEM")
