@@ -52,6 +52,19 @@
 			</tr> 
 		</c:forEach>
 	</table>
+	
+	<table>
+			<tr>
+				<td>Enter Your Name</td> 
+				<td><input name="customerName" /></td>
+			</tr>
+			<tr>
+				<td>Enter Your Email</td> 
+				<td><input name="emailAddress" /></td>
+			</tr>
+			
+	</table> 
+	
 	<input class="confirmation" type="submit" value="Purchase">
 </form:form>
 </div>

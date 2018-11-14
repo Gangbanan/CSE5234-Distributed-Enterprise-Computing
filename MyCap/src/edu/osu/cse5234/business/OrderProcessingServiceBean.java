@@ -1,9 +1,13 @@
 package edu.osu.cse5234.business;
 
+import java.util.Date;
 import java.util.Random;
 
+import javax.annotation.Resource;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.jms.*;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.persistence.EntityManager;
@@ -25,6 +29,7 @@ import edu.osu.cse5234.util.ServiceLocator;
  */
 @Stateless
 @LocalBean
+@Resource(name="jms/emailQCF", lookup="jms/emailQCF", type=ConnectionFactory.class) 
 public class OrderProcessingServiceBean {
 	
 	@PersistenceContext(unitName="MyCap")
@@ -34,6 +39,14 @@ public class OrderProcessingServiceBean {
 	private PaymentProcessorService service;
 	
 	private static String shippingResourceURI = "http://localhost:9080/UPS/jaxrs";
+	
+	@Inject
+	@JMSConnectionFactory("java:comp/env/jms/emailQCF")
+	private JMSContext jmsContext;
+
+	@Resource(lookup="jms/emailQ")
+	private Queue queue;
+
 	
     public OrderProcessingServiceBean() {
         // TODO Auto-generated constructor stub
@@ -58,6 +71,7 @@ public class OrderProcessingServiceBean {
     	entityManager.persist(order);
     	entityManager.flush();
     	
+    	// get shipping number
     	ShippingInitiationClient shippingInitiationClient = new ShippingInitiationClient(shippingResourceURI);
     	JsonObject responseJson =  shippingInitiationClient.invokeInitiateShipping(shippingInfoToJson(order));
     	
@@ -69,6 +83,9 @@ public class OrderProcessingServiceBean {
     	
     	entityManager.persist(order);
     	entityManager.flush();
+    	
+    	// notification
+    	notifyUser(order.getEmailAddress());
     	
     	Random random = new Random();
     	int orderNum = random.nextInt(10000000);
@@ -97,5 +114,16 @@ public class OrderProcessingServiceBean {
 				.add("ItemsNumber", order.getLineItems().size()).build();
 	}
     
-    
+	private void notifyUser(String customerEmail) {
+
+		String message = customerEmail + ":" +
+		       "Your order was successfully submitted. " + 
+		     	"You will hear from us when items are shipped. " + 
+		      	new Date();
+
+		System.out.println("Sending message: " + message);
+		jmsContext.createProducer().send(queue, message);
+		System.out.println("Message Sent!");
+	}
+
 }
