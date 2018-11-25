@@ -1,7 +1,6 @@
 package com.ups.shipping;
 
 import javax.json.*;
-import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.jws.WebService;
 
